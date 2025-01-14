@@ -1,0 +1,15 @@
+<div class="container">
+  <h1>Please Select Your Favorite Car :</h1>
+  <div class="cars-grid">
+    <app-car-box 
+      *ngFor="let car of cars; trackBy: trackByCarId" 
+      [carImage]="car.image_path" 
+      [carId]="car.id"
+      (voted)="showVoteNotification()">
+    </app-car-box>
+  </div>
+  <!-- Notification box for the vote -->
+  <div class="notification-box" *ngIf="showNotification">
+    Thank you for your vote!
+  </div>
+</div>

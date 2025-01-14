@@ -1,0 +1,11 @@
+<div class="car-box" (mousedown)="addVote($event)">
+  <img [src]="carImage" alt="Car Image" class="car-image" [class.clicked]="isClicked" />
+  <div class="progress-bar-container">
+    <div
+      class="progress-bar"
+      [style.width]="getProgressBarWidth()"
+    >
+    <span class="votes-text">{{ getVotes() }}</span>
+  </div>
+  </div>
+</div>

@@ -1,0 +1,60 @@
+.car-box {
+    width: 300px;
+    height: 300px;
+    border: 2px solid gray;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    background-color: grey;
+    cursor: pointer;
+  }
+  
+  .car-image {
+    width: 90%;
+    height: 90%;
+    margin: auto;
+    display: block;
+
+  }
+
+  .car-image.clicked {
+    transform: scale(0.95); /*Indication for the user that the clicked worked*/
+    transition: transform 0.2s;
+  }
+  
+  .progress-bar-container {
+    width: 200px;
+    height: 20px;
+    background-color: gray;
+    overflow: hidden;
+  }
+  
+  .progress-bar {
+    height: 100%;
+    background-color: rgb(255, 111, 0);
+    transition: width 0.4s ease-in-out;
+    
+  }
+
+  .votes-text {
+  position: relative;
+  z-index: 1; /* Ensure the text is visible on top of the bar */
+  pointer-events: none; /* Prevent interaction with the text */
+}
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
