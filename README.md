@@ -1,6 +1,6 @@
 # **Favorite Car Voting Site - ExplorAds Home Assignment**
 
-This project is a **full-stack voting application** built using **Angular** for the frontend and **Node.js/Express** for the backend, with real-time updates powered by **Socket.IO**.
+This project is a **full-stack voting application** built using **Angular** for the frontend and **Node.js/Express** for the backend, with real-time updates powered by **Socket.IO**. For simplicity, it uses a CSV file to store and update car votes instead of a database.
 
 ---
 Demo Video
@@ -133,6 +133,11 @@ git clone "https://github.com/amitdvash/favorite-car-voting-app.git"
 2. **Interact with the application:**
    - Click on any car box to cast a vote.
    - Observe real-time updates in votes and progress bars across all connected users.
+3. **Resetting Votes**:
+   - To reset the vote count for all cars to `0`, simply:
+     1. Open the CSV file named `cars.csv`.
+     2. Locate it in the directory: `server/public/data/cars.csv`.
+     3. Change the `votes` value for each car to `0`.
 
 ---
 
