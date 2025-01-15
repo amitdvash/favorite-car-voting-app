@@ -6,6 +6,7 @@ This project is a **full-stack voting application** built using **Angular** for 
 Demo Video
 
 Watch the application in action:
+
 https://github.com/user-attachments/assets/805cdc6d-3b3b-4201-a335-cfb542f6fc0c
 
 
