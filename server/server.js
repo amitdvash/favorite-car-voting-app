@@ -11,10 +11,10 @@ const PORT = 3000;
 // Create an HTTP server (needed for Socket.IO to work with Express)
 const server = http.createServer(app);
 
-// Initialize Socket.IO
+// Initialize Socket.IO with CORS configuration
 const io = new Server(server, {
     cors: {
-      origin: 'http://localhost:4200',
+      origin: 'http://localhost:4200', // Allow requests from Angular frontend
       methods: ['GET', 'POST'],
     },
 });
@@ -22,7 +22,7 @@ const io = new Server(server, {
 // Set io instance on app for use in routes
 app.set('io', io);
 
-// Middleware
+// Enable CORS middleware for Express
 app.use(cors());
 app.use(express.static('public'));
 
@@ -37,7 +37,10 @@ app.use('/api/cars', carRoutes);
 // Serve static files
 app.use('/images', express.static(path.join(__dirname, 'public', 'images')));
 
-// Socket.IO connection handling
+/**
+ * Socket.IO connection handling.
+ * Logs when a user connects or disconnects.
+ */
 io.on('connection', (socket) => {
     console.log('A user connected');
     
