@@ -101,22 +101,37 @@ router.post('/:id/vote', async (req, res) => {
                         mapHeaders: ({ header }) => header.trim().replace(/^﻿/, '')
                     }))
                     .on('data', (row) => {
-                        if (row.id === carId) {
-                            console.log(`Updating votes for car ${carId} from ${row.votes} to ${parseInt(row.votes, 10) + 1}`);
-                            row.votes = (parseInt(row.votes, 10) + 1).toString();
+
+                        console.log('Parsed row:', JSON.stringify(row));
+                        if (row.id && row.votes && row.image_path && row.name) {
+                            if (row.id === carId) {
+                                console.log(`Updating votes for car ${carId} from ${row.votes} to ${parseInt(row.votes, 10) + 1}`);
+                                row.votes = (parseInt(row.votes, 10) + 1).toString();
+                            }
+                            cars.push(row);
+                        } else {
+                            console.error('Incomplete row:', row);
                         }
-                        cars.push(row);
                     })
-                    .on('end', resolve)
+                    .on('end', () => {
+                        console.log('Total cars parsed:', cars.length);
+                        if (cars.length === 0) {
+                            reject(new Error('No valid cars found'));
+                        } else {
+                            resolve();
+                        }
+                    })
                     .on('error', (err) => {
                         console.error('Error while reading CSV for vote update:', err);
                         reject(err);
                     });
             });
 
-            const csvData = ['id,votes,image_path']
-                .concat(cars.map((car) => `${car.id},${car.votes},${car.image_path}`))
+            const csvData = ['id,votes,image_path,name']
+                .concat(cars.map((car) => `${car.id},${car.votes},${car.image_path},${car.name}`))
                 .join('\n');
+
+            console.log('CSV Data:', csvData);
 
             await fs.promises.writeFile(filePath, csvData);
             console.log(`Successfully updated votes for car ${carId}`);

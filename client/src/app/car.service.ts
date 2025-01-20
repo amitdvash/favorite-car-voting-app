@@ -21,6 +21,7 @@ export class CarService {
 
   // Fetch car list from the backend
   fetchCars(): void {
+    console.log('Sending the fetchCars request to the backend');
     this.http.get<any[]>('/api/cars').subscribe({
       next: (data) => {
         console.log('API Response:', data); // Debug to check what we get
@@ -37,9 +38,10 @@ export class CarService {
   }
 
   addVote(carId: number): void {
+    console.log('Sending the vote request to the backend');
     this.http.post(`/api/cars/${carId}/vote`, {}).subscribe({
       next: (response) => {
-        console.log('Vote updated successfully:', response);
+        console.log(`Vote for car ${carId} updated successfully.`, response);
       },
       error: (error) => {
         console.error('Error while voting:', error);

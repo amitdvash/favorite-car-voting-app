@@ -1,5 +1,6 @@
 <div class="car-box" (mousedown)="addVote($event)">
   <img [src]="carImage" alt="Car Image" class="car-image" [class.clicked]="isClicked" />
+  <div class="car-hover-name">{{ carName }}</div>
   <div class="progress-bar-container">
     <div
       class="progress-bar"

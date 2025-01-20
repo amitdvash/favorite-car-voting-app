@@ -2,18 +2,19 @@ import { Component, OnInit } from '@angular/core';
 import { CarBoxComponent } from './car-box/car-box.component';
 import { CommonModule } from '@angular/common';
 import { CarService } from './car.service';
-
+import { FormsModule } from '@angular/forms';
 
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CarBoxComponent, CommonModule], // CommonModule is for the ngFor for example
+  imports: [CarBoxComponent, CommonModule, FormsModule], // CommonModule is for the ngFor for example
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent implements OnInit{
   title = 'client';
+  filterText : string = '';
 
   cars: any[] = []; // Holds the cars data for display
   
@@ -54,6 +55,12 @@ export class AppComponent implements OnInit{
   // Image will be updated only if the car id is change or the url to the image is changed
   trackByCarId(index: number, car: any): string {
     return car.id; 
+  }
+
+  get filteredCars() {
+    return this.cars.filter(car => 
+      car.name.toLowerCase().includes(this.filterText.toLowerCase())
+    );
   }
   
 }

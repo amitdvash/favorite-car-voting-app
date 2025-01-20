@@ -10,6 +10,8 @@ import { CarService } from '../car.service';
 export class CarBoxComponent {
   @Input() carImage!: string;
   @Input() carId!: number;
+  @Input() carName!: string;
+
   votes: number = 0; // Default number of votes
   isClicked = false;
   @Output() voted = new EventEmitter<void>(); // Emits an event when a vote is cast, for the message: "Thank you for your vote"
@@ -21,6 +23,7 @@ export class CarBoxComponent {
   addVote(event: MouseEvent): void {
     event.preventDefault(); 
     this.isClicked = true;
+    console.log('Sending the vote request from car-box to the carService');
     this.carService.addVote(this.carId);
     setTimeout(() => {
       this.isClicked = false;
