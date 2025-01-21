@@ -7,7 +7,7 @@ Demo Video
 
 Watch the application in action:
 
-https://github.com/user-attachments/assets/a373b957-af1a-4af8-bed1-8eebe4bff2d7
+https://github.com/user-attachments/assets/d8559547-43f1-4d23-bb14-76440b2cb1ac
 
 ---
 ### **Project Overview**
